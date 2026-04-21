@@ -111,6 +111,7 @@ CREATE BASE RELATION Administrator
  NAME DOMAIN(NAME),
  EMAIL DOMAIN(EMAIL))
  PRIMARY KEY (ADMIN_ID);
+
 ## 4. Запити мовою реляційної алгебри
 
 ### Запит 1 (варіант 1, №1)
