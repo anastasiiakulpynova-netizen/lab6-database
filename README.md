@@ -27,46 +27,21 @@
 
 ---
 
-## 2. ER-модель (діаграма "сутність-зв'язок") 
-┌─────────────┐ ┌─────────────┐
-│ Student │ │ Group │
-├─────────────┤ ├─────────────┤
-│student_id PK│◄────────│ group_id PK │
-│name │ FK │ group_name │
-│surname │ └─────────────┘
-│email │
-│group_id FK │
-└─────────────┘
+## 2. ER-модель (діаграма "сутність-зв'язок")
 
-┌─────────────┐ ┌─────────────┐
-│ Teacher │ │ Subject │
-├─────────────┤ ├─────────────┤
-│teacher_id PK│ │subject_id PK│
-│name │ │subject_name │
-│surname │ └─────────────┘
-│email │
-└─────────────┘
+**Сутності та зв'язки:**
 
-┌─────────────────────────────────────────┐
-│ Schedule │
-├─────────────────────────────────────────┤
-│ schedule_id PK │
-│ date │
-│ time │
-│ group_id FK ──────────────► Group │
-│ teacher_id FK ────────────► Teacher │
-│ subject_id FK ────────────► Subject │
-└─────────────────────────────────────────┘
-┌─────────────────┐
-│ Administrator │
-├─────────────────┤
-│ admin_id PK │
-│ name │
-│ email │
-└─────────────────┘
+- **Student** (student_id PK, name, surname, email, group_id FK) ──► **Group** (group_id PK, group_name)
+- **Teacher** (teacher_id PK, name, surname, email) ──► **Schedule** (schedule_id PK, date, time)
+- **Subject** (subject_id PK, subject_name) ──► **Schedule** (schedule_id PK, date, time)
+- **Schedule** зв'язує Group, Teacher, Subject
+- **Administrator** (admin_id PK, name, email)
 
----
-
+**Зв'язки:**
+- Student (N) : (1) Group
+- Teacher (N) : (M) Subject (через Schedule)
+- Schedule (N) : (1) Group, (N) : (1) Teacher, (N) : (1) Subject
+  
 ## 3. Source файл з роботою (визначення даних)
 
 ### Домени
